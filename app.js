@@ -15,7 +15,7 @@ cellDivs.forEach(el => {
         if ( gameBoard[selectedRow][selectedCol] == '-' ) {
             selectedCell.innerText = 'X'
             gameBoard[selectedRow][selectedCol] = 'X'
-
+        
             if ( !isGameOver() ) {
                 // arvuti käib
                 emptyCell = getEmptyCell()
