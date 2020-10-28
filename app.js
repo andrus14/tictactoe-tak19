@@ -4,8 +4,6 @@ let gameBoard = [
     ['-', '-', '-']
  ]
 
-const winningSums = [7, 56, 73, 84, 146, 273, 292, 448]
-
 const cellDivs = document.querySelectorAll('.cell')
 
 cellDivs.forEach(el => {
@@ -16,10 +14,35 @@ cellDivs.forEach(el => {
 
         if ( gameBoard[selectedRow][selectedCol] == '-' ) {
             selectedCell.innerText = 'X'
-
             gameBoard[selectedRow][selectedCol] = 'X'
+
+            if ( !isGameOver() ) {
+                // arvuti käib
+                emptyCell = getEmptyCell()
+            }
     
             console.log(gameBoard)
         }
     })
-});
+})
+
+function getEmptyCell() {
+
+}
+
+function isGameOver() {
+
+    for ( let i = 0; i < 3; i++) {
+        if ( gameBoard[i][0] == gameBoard[i][1] && gameBoard[i][1] == gameBoard[i][2] && gameBoard[i][0] != '-' ) {
+            return true
+        }
+
+        if ( gameBoard[0][i] == gameBoard[1][i] && gameBoard[1][i] == gameBoard[2][i] && gameBoard[0][i] != '-' ) {
+            return true
+        }
+    }
+    // kaks diagonaali
+
+    return false
+}
+
